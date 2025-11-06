@@ -326,6 +326,14 @@
       margin-bottom: 0.02in;
     }
 
+    .experience-section {
+      page-break-before: always;
+    }
+
+    .remote-work-badge {
+      page-break-inside: avoid;
+    }
+
     @media print {
       [onclick="toggleSize()"] {
         display: none !important;
@@ -376,7 +384,7 @@
   <div class="section">
     <div class="about">
       Full-stack engineer focused on building reliable, event-driven systems. Specialize in .NET, SignalR, and React architectures. Ship production dashboards and automation pipelines that replace manual workflows. 13+ years shipping real-time systems, payments, trading platforms, and infrastructure.
-      <div style="margin-top: 1rem;margin-bottom: 2rem;">
+      <div style="margin-top: 1rem;margin-bottom: 2rem;" class="remote-work-badge">
         <div style="background-color:darkgreen; border: 1px solid #0d7c3a; color: white; font-size: .8em; font-weight: 600; display: inline; padding: 0.3rem 0.7rem; border-radius: 4px;">
         🌍 AVAILABLE FOR REMOTE WORK
         </div>
@@ -441,7 +449,7 @@
     </div>
   </div>
 
-  <div class="section">
+  <div class="section experience-section">
     <div class="section-title">Experience</div>
 
     <div class="job">

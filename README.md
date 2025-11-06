@@ -28,7 +28,8 @@ Enable GitHub Pages in settings (main branch).
 
 - Edit `index.html` for text/projects
 - Edit `css/style.css` colors
-- Add CV to `assets/cv.pdf`
+- View resume at `resume.html` (print to PDF via Ctrl+P)
+- Edit cover letter at `COVER-LETTER.md`
 
 ## License
 

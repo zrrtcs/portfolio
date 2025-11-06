@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aizzat Suhardi - Full-Stack Engineer. Building production systems with .NET, React, and real-time architectures.">
+  <title>Aizzat Suhardi - Full-Stack Engineer</title>
+
+  <!-- Geist Font from Vercel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Alpine.js for interactions -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+  <div class="main-container" x-data="portfolioApp()" @scroll.window="handleScroll()">
+
+    <!-- ==================== NAVBAR ==================== -->
+    <!-- Sticky nav that appears on scroll. Respects user control (not auto). -->
+    <nav class="navbar" :class="{ 'navbar-sticky': scrollY > 100 }">
+      <div class="navbar-content">
+        <a href="#home" class="navbar-brand">Aizzat</a>
+        <div class="navbar-links">
+          <a href="#projects" class="nav-link">Work</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#cv" class="nav-link">CV</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+      </div>
+
+      <!-- Scroll progress bar - shows where user is on page -->
+      <div class="progress-bar" :style="`width: ${scrollProgress}%`"></div>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <!-- Full viewport hero with smooth fade-out on scroll -->
+    <section id="home" class="hero" :style="`opacity: ${Math.max(0, 1 - scrollY / 400)}`">
+      <div class="hero-content">
+        <h1 class="hero-title">Aizzat Suhardi</h1>
+        <p class="hero-subtitle">Full-Stack Engineer</p>
+        <p class="hero-description">
+          <span class="accent-cyan">→</span> Shipping production systems that scale
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View Work</a>
+          <a href="assets/cv.pdf" download class="btn btn-secondary">Download CV</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section class="section about-section">
+      <div class="about-content">
+        <p class="about-text">I'm a full-stack engineer focused on building reliable, event-driven systems. I specialize in .NET, SignalR, and modern React architectures; shipping dashboards and automation pipelines that replace manual workflows.</p>
+        <p class="about-philosophy">Systems change lives through reliability and good engineering.</p>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURED PROJECT: SIGNALSBOARD ==================== -->
+    <!--
+      Demonstrates:
+      - Real project with live demo
+      - Tech stack showcase
+      - Skill highlights (will match skill tabs)
+    -->
+    <section id="projects" class="section">
+      <div class="section-header">
+        <h2>Featured Work</h2>
+        <p class="section-subtitle">Production-grade projects deployed to production</p>
+      </div>
+
+      <!-- Project Card: Signalsboard -->
+      <div class="project-card"
+           @mouseenter="hoveredProject = 'signalsboard'"
+           @mouseleave="hoveredProject = null"
+           :style="`
+             opacity: ${hoveredProject === null || hoveredProject === 'signalsboard' ? 1 : 0.5};
+             filter: ${hoveredProject === 'signalsboard' ? 'drop-shadow(0 0 30px var(--accent-pink))' : 'none'};
+           `">
+
+        <div class="project-header">
+          <h3 class="project-title">
+            <span class="project-icon">📡</span> Signalsboard
+          </h3>
+          <p class="project-tagline">Hospital Real-time Patient Monitoring Dashboard</p>
+        </div>
+
+        <div class="project-content">
+          <div class="project-description">
+            <p>
+              Production-grade real-time dashboard deployed live on Azure.
+              Monitors patient vital signs with critical alerts, automatic reconnection,
+              and zero-downtime deployment.
+            </p>
+            <ul class="project-highlights">
+              <li>Real-time vital signs via SignalR WebSocket</li>
+              <li>Automated CI/CD (GitHub Actions → Azure)</li>
+              <li>Medical alert thresholds (AHA guidelines)</li>
+              <li>Audio alerts + QR code sharing</li>
+            </ul>
+          </div>
+
+          <div class="tech-stack">
+            <h4>Tech Stack</h4>
+            <div class="tech-badges">
+              <span class="tech-badge backend">ASP.NET Core 9</span>
+              <span class="tech-badge backend">SignalR</span>
+              <span class="tech-badge backend">PostgreSQL</span>
+              <span class="tech-badge backend">EF Core 9</span>
+
+              <span class="tech-badge frontend">React 19</span>
+              <span class="tech-badge frontend">TypeScript</span>
+              <span class="tech-badge frontend">Zustand</span>
+              <span class="tech-badge frontend">Material-UI</span>
+
+              <span class="tech-badge devops">Azure App Service</span>
+              <span class="tech-badge devops">GitHub Actions</span>
+              <span class="tech-badge devops">Docker</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-links">
+          <a href="https://github.com/zrrtcs/signalsboard" target="_blank" class="link-with-arrow">
+            View GitHub
+            <span class="arrow">→</span>
+          </a>
+          <a href="https://hospital-dashboard-p1-cddtbnexcrdvckcu.malaysiawest-01.azurewebsites.net/" target="_blank" class="link-with-arrow accent-cyan">
+            Live Demo
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SKILLS SECTION ==================== -->
+    <!--
+      Why tab switching:
+      - Recruiters scan, don't read every detail
+      - Shows you're organized (grouped by category)
+      - Demonstrates Alpine.js mastery
+      - Works with project highlights (filter projects by selected skill)
+    -->
+    <section id="skills" class="section">
+      <div class="section-header">
+        <h2>Skills & Technologies</h2>
+        <p class="section-subtitle">13+ years building full-stack systems</p>
+      </div>
+
+      <!-- Skill Tabs -->
+      <div class="skill-tabs">
+        <button @click="activeSkillTab = 'backend'"
+                :class="{ 'active': activeSkillTab === 'backend' }"
+                class="tab-button">
+          BACKEND
+        </button>
+        <button @click="activeSkillTab = 'frontend'"
+                :class="{ 'active': activeSkillTab === 'frontend' }"
+                class="tab-button">
+          FRONTEND
+        </button>
+        <button @click="activeSkillTab = 'devops'"
+                :class="{ 'active': activeSkillTab === 'devops' }"
+                class="tab-button">
+          DEVOPS
+        </button>
+      </div>
+
+      <!-- Backend Skills -->
+      <div x-show="activeSkillTab === 'backend'" x-transition class="skills-content">
+        <div class="skill-item">
+          <div class="skill-header">
+            <h4>ASP.NET Core 9</h4>
+            <span class="level-badge">Advanced</span>
+          </div>
+          <p class="skill-description">SignalR, Minimal APIs, Entity Framework Core, DI</p>
+          <div class="progress-bar" style="width: 90%; background: var(--accent-pink);"></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <h4>C# & .NET Ecosystem</h4>
+            <span class="level-badge">Advanced</span>
+          </div>
+          <p class="skill-description">xUnit, Integration testing, Testcontainers, medical domain</p>
+          <div class="progress-bar" style="width: 88%; background: var(--accent-green);"></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <h4>Real-time Architecture</h4>
+            <span class="level-badge">Advanced</span>
+          </div>
+          <p class="skill-description">WebSocket, SignalR</p>
+          <div class="progress-bar" style="width: 86%; background: var(--accent-cyan);"></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <h4>PostgreSQL & Time-Series</h4>
+            <span class="level-badge">Intermediate</span>
+          </div>
+          <p class="skill-description">Indexing strategy, query optimization, migrations</p>
+          <div class="progress-bar" style="width: 78%; background: var(--accent-purple);"></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <h4>Node.js (Nest.js)</h4>
+            <span class="level-badge">Intermediate</span>
+          </div>
+          <p class="skill-description">REST APIs, TypeScript, dependency injection</p>
+          <div class="progress-bar" style="width: 76%; background: var(--accent-pink);"></div>
+        </div>
+      </div>
+
+      <!-- Frontend Skills -->
+      <div x-show="activeSkillTab === 'frontend'" x-transition class="skills-content">
+        <div class="skill-item">
+          <div class="skill-header">
+            <h4>React + TypeScript</h4>
+            <span class="level-badge">Intermediate</span>
+          </div>
+          <p class="skill-description">Component composition, hooks, Zustand state management, real-time updates</p>
+          <div class="progress-bar" style="width: 84%; background: var(--accent-cyan);"></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <h4>Real-time updates integration</h4>
+            <span class="level-badge">Intermediate</span>
+          </div>
+          <p class="skill-description">Web-socket</p>
+          <div class="progress-bar" style="width: 82%; background: var(--accent-cyan);"></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <h4>AngularJS, Vue.js, Knockout.js, Alpine.js & SolidJS</h4>
+            <span class="level-badge">Intermediate</span>
+          </div>
+          <p class="skill-description">Production experience with stock remisier dashboards and payment platforms</p>
+          <div class="progress-bar" style="width: 75%; background: var(--accent-purple);"></div>
+        </div>
+      </div>
+
+      <!-- DevOps Skills -->
+      <div x-show="activeSkillTab === 'devops'" x-transition class="skills-content">
+        <div class="skill-item">
+          <div class="skill-header">
+            <h4>Azure App Service</h4>
+            <span class="level-badge">Intermediate</span>
+          </div>
+          <p class="skill-description">Zero-downtime deployments, health checks, auto-scaling</p>
+          <div class="progress-bar" style="width: 88%; background: var(--accent-pink);"></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <h4>GitHub Actions CI/CD</h4>
+            <span class="level-badge">Advanced</span>
+          </div>
+          <p class="skill-description">Automated builds, tests, deployments on push</p>
+          <div class="progress-bar" style="width: 86%; background: var(--accent-cyan);"></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <h4>Google App Engine & Cloud Platform</h4>
+            <span class="level-badge">Intermediate</span>
+          </div>
+          <p class="skill-description">App Engine deployments, microservices, cloud infrastructure</p>
+          <div class="progress-bar" style="width: 78%; background: var(--accent-green);"></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <h4>Firebase & Firestore</h4>
+            <span class="level-badge">Intermediate</span>
+          </div>
+          <p class="skill-description">Real-time databases, authentication, production dashboards</p>
+          <div class="progress-bar" style="width: 77%; background: var(--accent-purple);"></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <h4>Docker & Containerization</h4>
+            <span class="level-badge">Intermediate</span>
+          </div>
+          <p class="skill-description">Dockerfile optimization, docker-compose, health checks</p>
+          <div class="progress-bar" style="width: 80%; background: var(--accent-green);"></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <h4>Git & Git Flow</h4>
+            <span class="level-badge">Advanced</span>
+          </div>
+          <p class="skill-description">Feature branches, conventional commits, code reviews</p>
+          <div class="progress-bar" style="width: 87%; background: var(--accent-pink);"></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <h4>Database Migrations</h4>
+            <span class="level-badge">Advanced</span>
+          </div>
+          <p class="skill-description">EF Core migrations, schema versioning, production safety</p>
+          <div class="progress-bar" style="width: 85%; background: var(--accent-purple);"></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-header">
+            <h4>Linux & Windows Administration</h4>
+            <span class="level-badge">Intermediate</span>
+          </div>
+          <p class="skill-description">Debian-based systems, bash scripting, Windows services/WPF</p>
+          <div class="progress-bar" style="width: 76%; background: var(--accent-cyan);"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CV SECTION ==================== -->
+    <!--
+      Why expandable experience:
+      - Recruiters scan, not read every detail
+      - Progressive disclosure: show summary, expand for details
+      - Shows you understand UX principles
+      - No bloat: long CVs are boring, this is readable
+    -->
+    <section id="cv" class="section">
+      <div class="section-header">
+        <h2>Experience</h2>
+        <p class="section-subtitle">13+ years in full-stack, payments, trading, and real-time systems</p>
+      </div>
+
+      <!-- CV Download -->
+      <div class="cv-download-section">
+        <div class="download-container" x-data="{ copied: false }">
+          <a href="assets/cv.pdf" download class="btn btn-primary">
+            📄 Download Full CV (PDF)
+          </a>
+          <button @click="
+            navigator.clipboard.writeText('aizzat.suhardi@gmail.com');
+            copied = true;
+            setTimeout(() => copied = false, 2000);
+          "
+          class="btn btn-secondary">
+            <span x-show="!copied">📋 Copy Email</span>
+            <span x-show="copied" class="success">✓ Copied!</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Experience Items (Expandable) -->
+      <div class="experience-list">
+
+        <!-- PayHalal -->
+        <div class="experience-item">
+          <button @click="expandedRoles.includes('payhalal')
+                     ? expandedRoles = expandedRoles.filter(r => r !== 'payhalal')
+                     : expandedRoles.push('payhalal')"
+                  :class="{ 'expanded': expandedRoles.includes('payhalal') }"
+                  class="experience-header">
+            <div class="experience-title">
+              <h4>Senior Software Development Engineer</h4>
+              <p class="company">PayHalal</p>
+            </div>
+            <div class="experience-meta">
+              <span class="period">May 2023 - July 2025</span>
+              <span class="location">Kuala Lumpur</span>
+              <span class="toggle-icon">→</span>
+            </div>
+          </button>
+
+          <div x-show="expandedRoles.includes('payhalal')" x-transition class="experience-details">
+            <p class="experience-description">
+              Modernized legacy PHP payment infrastructure by refactoring procedural codebases into object-oriented PHP 8,
+              improving maintainability and reducing onboarding time. Engineered automated financial regulatory reporting
+              pipelines for compliance, enabling 100x+ volume processing (exceeded Excel's row limit).
+            </p>
+            <ul class="achievements">
+              <li>✓ Refactored legacy PHP to OOP PHP 8 across core services</li>
+              <li>✓ Built automated BNM regulatory reporting (compliance-critical)</li>
+              <li>✓ Led experimental Next.js migration validation</li>
+              <li>✓ Collaborated cross-functionally (Support, DevOps, Product)</li>
+            </ul>
+            <div class="tech-used">
+              <strong>Stack:</strong> PHP 8 (OOP), MySQL, JavaScript ES6+, SolidJS, PrimeFaces, Docker, REST APIs
+            </div>
+          </div>
+        </div>
+
+        <!-- Mahersaham -->
+        <div class="experience-item">
+          <button @click="expandedRoles.includes('mahersaham')
+                     ? expandedRoles = expandedRoles.filter(r => r !== 'mahersaham')
+                     : expandedRoles.push('mahersaham')"
+                  :class="{ 'expanded': expandedRoles.includes('mahersaham') }"
+                  class="experience-header">
+            <div class="experience-title">
+              <h4>Software Development Engineer (R&D, UI Engineering)</h4>
+              <p class="company">Mahersaham</p>
+            </div>
+            <div class="experience-meta">
+              <span class="period">February 2021 - May 2021</span>
+              <span class="location">Putrajaya</span>
+              <span class="toggle-icon">→</span>
+            </div>
+          </button>
+
+          <div x-show="expandedRoles.includes('mahersaham')" x-transition class="experience-details">
+            <p class="experience-description">
+              Built production Stock Screener app for Bursa Malaysia and global markets.
+              Collaborated with Python engineers and market traders to deliver real-time trading interface.
+            </p>
+            <ul class="achievements">
+              <li>✓ Built UI/UX for stock screening platform</li>
+              <li>✓ Real-time data visualization</li>
+              <li>✓ Cross-team collaboration (Engineers, Traders)</li>
+            </ul>
+            <div class="tech-used">
+              <strong>Stack:</strong> React, Python, Market data APIs
+            </div>
+          </div>
+        </div>
+
+        <!-- Appspace -->
+        <div class="experience-item">
+          <button @click="expandedRoles.includes('appspace')
+                     ? expandedRoles = expandedRoles.filter(r => r !== 'appspace')
+                     : expandedRoles.push('appspace')"
+                  :class="{ 'expanded': expandedRoles.includes('appspace') }"
+                  class="experience-header">
+            <div class="experience-title">
+              <h4>Software Development Engineer</h4>
+              <p class="company">Appspace</p>
+            </div>
+            <div class="experience-meta">
+              <span class="period">February 2019 - July 2019</span>
+              <span class="location">Kuala Lumpur</span>
+              <span class="toggle-icon">→</span>
+            </div>
+          </button>
+
+          <div x-show="expandedRoles.includes('appspace')" x-transition class="experience-details">
+            <p class="experience-description">
+              Worked on broadcast communication and space management platform.
+              Contributed to microservices following CQRS architecture patterns.
+            </p>
+            <ul class="achievements">
+              <li>✓ CQRS architecture maintenance</li>
+              <li>✓ Agile sprint methodology</li>
+              <li>✓ Google Cloud Platform integration</li>
+            </ul>
+            <div class="tech-used">
+              <strong>Stack:</strong> Microservices, CQRS, Google Cloud Platform, Jira/Bamboo
+            </div>
+          </div>
+        </div>
+
+        <!-- Earlier Roles (Summary) -->
+        <div class="experience-item">
+          <button @click="expandedRoles.includes('earlier')
+                     ? expandedRoles = expandedRoles.filter(r => r !== 'earlier')
+                     : expandedRoles.push('earlier')"
+                  :class="{ 'expanded': expandedRoles.includes('earlier') }"
+                  class="experience-header">
+            <div class="experience-title">
+              <h4>Earlier Roles (9+ years)</h4>
+              <p class="company">MY E.G. Services, AGTIV, GHL Systems, and more</p>
+            </div>
+            <div class="experience-meta">
+              <span class="period">2011 - 2018</span>
+              <span class="toggle-icon">→</span>
+            </div>
+          </button>
+
+          <div x-show="expandedRoles.includes('earlier')" x-transition class="experience-details">
+            <ul class="achievements">
+              <li>✓ <strong>MY E.G. Services</strong> - GST IoT client, Market Maker trading modules (.NET Core MVC, Vue.js)</li>
+              <li>✓ <strong>AGTIV Consulting</strong> - SharePoint frontend revamp (Angular 1.x)</li>
+              <li>✓ <strong>GHL Systems</strong> - ePayments portal (ASP.NET Web Forms/MVC, Windows Services)</li>
+              <li>✓ <strong>Slashes and Dots</strong> - Technical support, JomSocial Joomla extension</li>
+              <li>✓ <strong>Speedminer</strong> - Manufacturing systems (Intersystems CachéDB, ObjectScript)</li>
+            </ul>
+            <div class="tech-used">
+              <strong>Combined experience:</strong> Full-stack .NET, JavaScript, trading systems, IoT, Windows Services, CMS
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <!-- Email copy button: respects recruiter's time (saves them typing) -->
+    <section id="contact" class="section">
+      <div class="section-header">
+        <h2>Let's Build Something</h2>
+        <p class="section-subtitle">Open to opportunities in full-stack, real-time systems, and production deployment</p>
+      </div>
+
+      <div class="contact-container" x-data="{ copied: false }">
+        <p class="contact-message">
+          Have an interesting project or want to discuss architecture? Let's talk.
+        </p>
+
+        <button @click="
+          navigator.clipboard.writeText('aizzat.suhardi@gmail.com');
+          copied = true;
+          setTimeout(() => copied = false, 2500);
+        "
+        class="btn btn-primary btn-large">
+          <span x-show="!copied">📧 aizzat.suhardi@gmail.com</span>
+          <span x-show="copied" class="success">✓ Copied to clipboard!</span>
+        </button>
+
+        <div class="social-links">
+          <a href="https://linkedin.com/in/aizzatsuhardi" target="_blank" class="social-link">LinkedIn</a>
+          <span class="separator">•</span>
+          <a href="https://github.com/zrrtcs" target="_blank" class="social-link">GitHub</a>
+          <span class="separator">•</span>
+          <a href="https://stackoverflow.com/users/273743/aizzat-suhardi" target="_blank" class="social-link">StackOverflow</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+      <p>&copy; 2025 Aizzat Suhardi. Built with Alpine.js and Geist font.</p>
+    </footer>
+
+  </div>
+
+  <!-- Alpine.js App Logic -->
+  <script>
+    function portfolioApp() {
+      return {
+        scrollY: 0,
+        scrollProgress: 0,
+        activeSkillTab: 'backend',
+        expandedRoles: [],
+        hoveredProject: null,
+
+        handleScroll() {
+          // Track scroll position for navbar and fade effects
+          this.scrollY = window.scrollY;
+
+          // Calculate scroll progress (0-100%)
+          const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+          this.scrollProgress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+        }
+      }
+    }
+  </script>
+</body>
+</html>

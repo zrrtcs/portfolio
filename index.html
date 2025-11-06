@@ -48,7 +48,7 @@
 
         <div class="hero-buttons">
           <a href="#projects" class="btn btn-primary">View Work</a>
-          <a href="assets/cv.pdf" download class="btn btn-secondary">Download CV</a>
+          <a href="resume.html" class="btn btn-secondary">View Resume</a>
         </div>
       </div>
     </section>
@@ -56,8 +56,12 @@
     <!-- ==================== ABOUT SECTION ==================== -->
     <section class="section about-section">
       <div class="about-content">
+        <div class="remote-badge">
+          🌍 Available for Remote Work
+        </div>
         <p class="about-text">I'm a full-stack engineer focused on building reliable, event-driven systems. I specialize in .NET, SignalR, and modern React architectures; shipping dashboards and automation pipelines that replace manual workflows.</p>
         <p class="about-philosophy">Systems change lives through reliability and good engineering.</p>
+        <p class="about-philosophy">Code demi kesejahteraan manusia. Code for the well-being of humankind</p>
       </div>
     </section>
 
@@ -342,8 +346,8 @@
       <!-- CV Download -->
       <div class="cv-download-section">
         <div class="download-container" x-data="{ copied: false }">
-          <a href="assets/cv.pdf" download class="btn btn-primary">
-            📄 Download Full CV (PDF)
+          <a href="resume.html" class="btn btn-primary">
+            📄 View Full Resume
           </a>
           <button @click="
             navigator.clipboard.writeText('aizzat.suhardi@gmail.com');

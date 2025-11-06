@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aizzat Suhardi - Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @page {
+      size: A4;
+      margin: 0.5in;
+    }
+
+    body {
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.5;
+      color: #1a1a1a;
+      background: white;
+      padding: 0.5in;
+      max-width: 8.5in;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      border-bottom: 3px solid #dc2626;
+      padding-bottom: 0.4in;
+      margin-bottom: 0.3in;
+    }
+
+    .name {
+      font-size: 42px;
+      font-weight: 700;
+      color: #0a1628;
+      margin-bottom: 0.15in;
+    }
+
+    .title {
+      font-size: 21px;
+      color: #dc2626;
+      font-weight: 600;
+      margin-bottom: 0.2in;
+    }
+
+    .contact {
+      font-size: 13px;
+      color: #555;
+    }
+
+    .contact a {
+      color: #1e40af;
+      text-decoration: none;
+    }
+
+    .section {
+      margin-bottom: 0.25in;
+    }
+
+    .section-title {
+      font-size: 21px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #0a1628;
+      border-bottom: 3px solid #dc2626;
+      padding-bottom: 0.15in;
+      margin-bottom: 0.2in;
+      letter-spacing: 0.05em;
+    }
+
+    .about {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 0.25in;
+    }
+
+    .job {
+      margin-bottom: 0.3in;
+      page-break-inside: avoid;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.08in;
+    }
+
+    .job-title {
+      font-size: 19px;
+      font-weight: 700;
+      color: #0a1628;
+    }
+
+    .job-dates {
+      font-size: 16px;
+      color: #666;
+      font-weight: 600;
+    }
+
+    .company {
+      font-size: 18px;
+      color: #dc2626;
+      font-weight: 600;
+      margin-bottom: 0.08in;
+    }
+
+    .job-description {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 0.12in;
+    }
+
+    .achievements {
+      font-size: 16px;
+      color: #666;
+      margin-left: 0.2in;
+      margin-bottom: 0.12in;
+    }
+
+    .achievements li {
+      list-style: none;
+      margin-bottom: 0.05in;
+    }
+
+    .achievements li::before {
+      content: '▪ ';
+      color: #16a34a;
+      font-weight: bold;
+      margin-right: 0.08in;
+    }
+
+    .tech {
+      font-size: 16px;
+      color: #666;
+      margin-top: 0.08in;
+    }
+
+    .tech strong {
+      color: #0a1628;
+    }
+
+    .skill-category {
+      margin-bottom: 0.2in;
+    }
+
+    .skill-category-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #dc2626;
+      margin-bottom: 0.08in;
+    }
+
+    .skills {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .project {
+      margin-bottom: 0.2in;
+      page-break-inside: avoid;
+    }
+
+    .project-title {
+      font-size: 19px;
+      font-weight: 700;
+      color: #0a1628;
+      margin-bottom: 0.05in;
+    }
+
+    .project-desc {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 0.08in;
+    }
+
+    .project-tech {
+      font-size: 16px;
+      color: #16a34a;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #f0f0f0;
+      color: #1a1a1a;
+      padding: 0.04in 0.12in;
+      border-radius: 3px;
+      font-size: 15px;
+      margin-right: 0.08in;
+      margin-bottom: 0.05in;
+      border: 1px solid #ddd;
+    }
+
+    .badge.backend {
+      border-color: #dc2626;
+      color: #dc2626;
+    }
+
+    .badge.frontend {
+      border-color: #1e40af;
+      color: #1e40af;
+    }
+
+    .badge.devops {
+      border-color: #16a34a;
+      color: #16a34a;
+    }
+
+    body.compact .name {
+      font-size: 28px;
+      margin-bottom: 0.08in;
+    }
+
+    body.compact .title {
+      font-size: 14px;
+      margin-bottom: 0.1in;
+    }
+
+    body.compact .contact {
+      font-size: 10px;
+    }
+
+    body.compact .section-title {
+      font-size: 14px;
+      border-bottom: 2px solid #dc2626;
+      padding-bottom: 0.08in;
+      margin-bottom: 0.12in;
+    }
+
+    body.compact .about {
+      font-size: 11px;
+      line-height: 1.5;
+      margin-bottom: 0.15in;
+    }
+
+    body.compact .job {
+      margin-bottom: 0.15in;
+    }
+
+    body.compact .job-header {
+      margin-bottom: 0.03in;
+    }
+
+    body.compact .job-title {
+      font-size: 12px;
+    }
+
+    body.compact .job-dates {
+      font-size: 10px;
+    }
+
+    body.compact .company {
+      font-size: 11px;
+      margin-bottom: 0.03in;
+    }
+
+    body.compact .job-description {
+      font-size: 10px;
+      line-height: 1.4;
+      margin-bottom: 0.06in;
+    }
+
+    body.compact .achievements {
+      font-size: 10px;
+      margin-left: 0.1in;
+      margin-bottom: 0.06in;
+    }
+
+    body.compact .achievements li {
+      margin-bottom: 0.02in;
+    }
+
+    body.compact .tech {
+      font-size: 10px;
+      margin-top: 0.04in;
+    }
+
+    body.compact .skill-category {
+      margin-bottom: 0.1in;
+    }
+
+    body.compact .skill-category-title {
+      font-size: 11px;
+      margin-bottom: 0.03in;
+    }
+
+    body.compact .skills {
+      font-size: 10px;
+      line-height: 1.4;
+    }
+
+    body.compact .project {
+      margin-bottom: 0.12in;
+    }
+
+    body.compact .project-title {
+      font-size: 12px;
+      margin-bottom: 0.02in;
+    }
+
+    body.compact .project-desc {
+      font-size: 10px;
+      line-height: 1.4;
+      margin-bottom: 0.04in;
+    }
+
+    body.compact .project-tech {
+      font-size: 10px;
+    }
+
+    body.compact .badge {
+      font-size: 9px;
+      padding: 0.02in 0.06in;
+      margin-right: 0.04in;
+      margin-bottom: 0.02in;
+    }
+
+    @media print {
+      [onclick="toggleSize()"] {
+        display: none !important;
+      }
+    }
+  </style>
+
+  <script>
+    function toggleSize() {
+      const body = document.body;
+      const toggleText = document.getElementById('toggleText');
+
+      if (body.classList.contains('compact')) {
+        body.classList.remove('compact');
+        toggleText.textContent = 'Compact';
+        localStorage.setItem('resumeSize', 'full');
+      } else {
+        body.classList.add('compact');
+        toggleText.textContent = 'Full Size';
+        localStorage.setItem('resumeSize', 'compact');
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      const savedSize = localStorage.getItem('resumeSize');
+      if (savedSize === 'compact') {
+        document.body.classList.add('compact');
+        document.getElementById('toggleText').textContent = 'Full Size';
+      }
+    });
+  </script>
+</head>
+<body>
+  <div style="position: fixed; top: 10px; right: 10px; z-index: 1000;">
+    <button onclick="toggleSize()" style="padding: 10px 15px; font-size: 14px; font-weight: 600; background: #dc2626; color: white; border: none; border-radius: 4px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+      📄 Switch to <span id="toggleText">Compact</span>
+    </button>
+  </div>
+
+  <div class="header">
+    <div class="name">AIZZAT SUHARDI</div>
+    <div class="title">Full-Stack Engineer • Real-time Systems Specialist</div>
+    <div class="contact">
+      aizzat.suhardi@gmail.com • github.com/zrrtcs • linkedin.com/in/aizzatsuhardi
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="about">
+      Full-stack engineer focused on building reliable, event-driven systems. Specialize in .NET, SignalR, and React architectures. Ship production dashboards and automation pipelines that replace manual workflows. 13+ years shipping real-time systems, payments, trading platforms, and infrastructure.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Core Competencies</div>
+
+    <div class="skill-category">
+      <div class="skill-category-title">Backend</div>
+      <div class="skills">
+        ASP.NET Core 9 • C# & .NET Ecosystem • Real-time Architecture (SignalR) • PostgreSQL • Node.js/Nest.js
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-category-title">Frontend</div>
+      <div class="skills">
+        React 19 + TypeScript • Zustand State Management • Material-UI • SignalR Client • Web Audio API
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-category-title">DevOps & Infrastructure</div>
+      <div class="skills">
+        Azure App Service • GitHub Actions CI/CD • Docker • Google App Engine • Firebase • Database Migrations • Git Flow
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Featured Project</div>
+
+    <div class="project">
+      <div class="project-title">Signalsboard — Hospital Real-time Patient Monitoring Dashboard</div>
+      <div class="project-desc">
+        Production-grade real-time dashboard deployed live on Azure. Monitors patient vital signs with critical alerts, automatic reconnection, and zero-downtime deployment.
+      </div>
+      <div class="project-tech">
+        <span class="badge backend">ASP.NET Core 9</span>
+        <span class="badge backend">SignalR</span>
+        <span class="badge backend">PostgreSQL</span>
+        <span class="badge frontend">React 19</span>
+        <span class="badge frontend">TypeScript</span>
+        <span class="badge devops">Azure</span>
+        <span class="badge devops">GitHub Actions</span>
+      </div>
+      <div style="margin-top: 0.8rem; display: flex; align-items: center; gap: 0.6rem;">
+        <a href="https://hospital-dashboard-p1-cddtbnexcrdvckcu.malaysiawest-01.azurewebsites.net/" target="_blank" style="display: inline-block; background: #dc2626; color: white; padding: 0.4rem 0.8rem; border-radius: 3px; text-decoration: none; font-weight: 600; font-size: 10px; white-space: nowrap; height: fit-content;">
+          🚀 Live Demo
+        </a>
+        <img src="assets/demo-qr.svg" alt="Demo QR Code" style="width: 0.9rem; height: 0.9rem; border: 1px solid #ddd; padding: 0.05rem;">
+      </div>
+      <p style="font-size: 9px; color: #666; word-break: break-all; line-height: 1.4; margin-top: 0.3rem;">
+        hospital-dashboard-p1-cddtbnexcrdvckcu.malaysiawest-01.azurewebsites.net
+      </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Experience</div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Senior Software Development Engineer</div>
+        <div class="job-dates">May 2023 – July 2025</div>
+      </div>
+      <div class="company">PayHalal, Kuala Lumpur</div>
+      <div class="job-description">
+        Involved in development and modernization of legacy payment infrastructure by refactoring procedural PHP 7 codebases into object-oriented PHP 8, improving maintainability, readability, and performance across core services.
+      </div>
+      <ul class="achievements">
+        <li>Refactored legacy PHP to OOP PHP 8 across multiple core services improving codebase maintainability</li>
+        <li>Developed automated financial regulatory reporting pipelines for BNM regulatory authorities, enabling generation at volume exceeding Excel row limits</li>
+        <li>Engineered front-facing payment modules and dashboards using jQuery, SolidJS, and PrimeFaces, seamlessly integrating with payment flows</li>
+        <li>Collaborated with cross-functional teams (Support, DevOps, Product) to ensure secure, scalable, and compliant payment systems</li>
+        <li>Led experimental migration validation from NestJS to Next.js for marketplace platform, validating modular design patterns</li>
+      </ul>
+      <div class="tech"><strong>Stack:</strong> PHP 8 (OOP) • MySQL • JavaScript (ES6+) • SolidJS • jQuery • PrimeFaces • Docker • REST APIs</div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Solutions Architect (Automation)</div>
+        <div class="job-dates">Aug 2021 – Sep 2021</div>
+      </div>
+      <div class="company">Eurofins Scientific Malaysia</div>
+      <div class="job-description">
+        Junior Solutions Architect for Eurofins Scientific Kuala Lumpur (Remote). RPA and automation solutions development.
+      </div>
+      <div class="tech"><strong>Stack:</strong> UiPath • C#</div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Software Development Engineer (R&D, UI Engineering)</div>
+        <div class="job-dates">Feb 2021 – May 2021</div>
+      </div>
+      <div class="company">Mahersaham, Putrajaya</div>
+      <div class="job-description">
+        Built production Stock Screener application for Bursa Malaysia and global markets. Real-time trading interface with market data integration, collaborating with Python engineers and market traders.
+      </div>
+      <ul class="achievements">
+        <li>Developed UI/UX engineering solutions for stock screening platform</li>
+        <li>Integrated real-time market data visualization and analytics</li>
+        <li>Cross-team collaboration with Python engineers and professional traders</li>
+      </ul>
+      <div class="tech"><strong>Stack:</strong> React.js • Cloud Firestore • Python • Market Data APIs</div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Software Development Engineer</div>
+        <div class="job-dates">Feb 2019 – July 2019</div>
+      </div>
+      <div class="company">Appspace, Kuala Lumpur</div>
+      <div class="job-description">
+        Contributed to broadcast communication and space management platform development. Worked on microservices following CQRS architecture patterns in Agile sprint cycles.
+      </div>
+      <ul class="achievements">
+        <li>Provided code commits and assistance for sprint tickets in Agile sprint cycles</li>
+        <li>Worked on microservices maintenance using CQRS architecture patterns</li>
+        <li>Gained production experience with Google Cloud Platform infrastructure</li>
+      </ul>
+      <div class="tech"><strong>Stack:</strong> AngularJS • JavaScript • Microservices • CQRS • Google Cloud Platform • Jira/Bamboo</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Earlier Roles</div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Software Engineer</div>
+        <div class="job-dates">2015–2018</div>
+      </div>
+      <div class="company">MY E.G. Services</div>
+      <div class="job-description">
+        GST IoT client, Market Maker trading modules. Full-stack development with .NET and Vue.js.
+      </div>
+      <div class="tech"><strong>Stack:</strong> .NET Core MVC • Vue.js • IoT</div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Frontend Engineer</div>
+        <div class="job-dates">2014–2015</div>
+      </div>
+      <div class="company">AGTIV Consulting</div>
+      <div class="job-description">
+        SharePoint frontend revamp and modernization.
+      </div>
+      <div class="tech"><strong>Stack:</strong> Angular 1.x • SharePoint</div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Software Engineer</div>
+        <div class="job-dates">2012–2014</div>
+      </div>
+      <div class="company">GHL Systems</div>
+      <div class="job-description">
+        ePayments portal development. Full-stack ASP.NET and Windows Services.
+      </div>
+      <div class="tech"><strong>Stack:</strong> ASP.NET Web Forms/MVC • Windows Services</div>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-title">Developer</div>
+        <div class="job-dates">2011–2012</div>
+      </div>
+      <div class="company">Speedminer</div>
+      <div class="job-description">
+        Manufacturing systems. Real-time data processing and integration.
+      </div>
+      <div class="tech"><strong>Stack:</strong> Intersystems CachéDB • ObjectScript</div>
+    </div>
+  </div>
+
+</body>
+</html>

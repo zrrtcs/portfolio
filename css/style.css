@@ -280,6 +280,31 @@ button {
   margin-top: 2rem;
 }
 
+.remote-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #b91c1c 100%);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+  animation: pulse-badge 2s ease-in-out infinite;
+}
+
+@keyframes pulse-badge {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5);
+  }
+}
+
 /* ==================== PROJECT CARD ==================== */
 .project-card {
   background: var(--bg-card);

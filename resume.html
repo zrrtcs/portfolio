@@ -338,6 +338,18 @@
       [onclick="toggleSize()"] {
         display: none !important;
       }
+
+      /* Ensure remote work badge looks the same in print */
+      .remote-work-badge div {
+        background-color: darkgreen !important;
+        color: white !important;
+        border: 1px solid #0d7c3a !important;
+        font-size: .8em !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        padding: 0.3rem 0.7rem !important;
+        border-radius: 4px !important;
+      }
     }
   </style>
 

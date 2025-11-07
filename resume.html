@@ -335,7 +335,8 @@
     }
 
     @media print {
-      [onclick="toggleSize()"] {
+      [onclick="toggleSize()"],
+      a[href="./index.html"] {
         display: none !important;
       }
 
@@ -379,7 +380,10 @@
   </script>
 </head>
 <body>
-  <div style="position: fixed; top: 10px; right: 10px; z-index: 1000;">
+  <div style="position: fixed; top: 10px; right: 10px; z-index: 1000; display: flex; gap: 8px;">
+    <a href="./index.html" style="display: inline-block; padding: 10px 15px; font-size: 14px; font-weight: 600; background: #1e40af; color: white; border: none; border-radius: 4px; text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,0.3); cursor: pointer;">
+      ↖ Portfolio
+    </a>
     <button onclick="toggleSize()" style="padding: 10px 15px; font-size: 14px; font-weight: 600; background: #dc2626; color: white; border: none; border-radius: 4px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
       📄 Switch to <span id="toggleText">Compact</span>
     </button>
@@ -411,14 +415,14 @@
     <div class="skill-category">
       <div class="skill-category-title">Backend</div>
       <div class="skills">
-        ASP.NET Core 9 • C# & .NET Ecosystem • Real-time Architecture (SignalR) • PostgreSQL • Node.js/Nest.js
+        ASP.NET Core 9 • C# & .NET Ecosystem • Real-time Architecture (SignalR) • PostgreSQL • Node.js/Nest.js • RabbitMQ
       </div>
     </div>
 
     <div class="skill-category">
       <div class="skill-category-title">Frontend</div>
       <div class="skills">
-        React 19 + TypeScript • Zustand State Management • Material-UI • SignalR Client • Web Audio API
+        React 19 + TypeScript • Zustand State Management • Material-UI • SignalR Client
       </div>
     </div>
 

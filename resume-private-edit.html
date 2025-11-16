@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Private Information Editor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Geist', -apple-system, sans-serif;
+      background: #0a1628;
+      color: #e0e0e0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #1a2332;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      color: #dc2626;
+      margin-bottom: 0.5rem;
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      color: #999;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      background: #0f1923;
+      border-radius: 6px;
+      border-left: 4px solid #dc2626;
+    }
+
+    .section-title {
+      color: #dc2626;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      color: #16a34a;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .hint {
+      display: block;
+      color: #666;
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.75rem;
+      background: #1a2332;
+      border: 1px solid #374151;
+      border-radius: 4px;
+      color: #e0e0e0;
+      font-family: 'Geist', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.3s;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: #dc2626;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .job-block {
+      background: #1a2332;
+      padding: 1.5rem;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      border: 1px solid #374151;
+    }
+
+    .job-header {
+      color: #1e40af;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-family: 'Geist', sans-serif;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: #dc2626;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #b91c1c;
+    }
+
+    .btn-secondary {
+      background: #374151;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #4b5563;
+    }
+
+    .advice-box {
+      background: #1e3a2f;
+      border-left: 4px solid #16a34a;
+      padding: 1rem;
+      margin-top: 0.5rem;
+      border-radius: 4px;
+    }
+
+    .advice-title {
+      color: #16a34a;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .advice-text {
+      color: #a0a0a0;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .warning {
+      background: #3a1e1e;
+      border-left: 4px solid #dc2626;
+      padding: 1rem;
+      margin-top: 2rem;
+      border-radius: 4px;
+      color: #fca5a5;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔒 Private Resume Information Editor</h1>
+    <p class="subtitle">Fill in sensitive information for interview preparation. This will generate resume-private.html with reasons for leaving, salary expectations, and contact details.</p>
+
+    <form id="privateForm">
+
+      <!-- Personal Contact Information -->
+      <div class="section">
+        <h2 class="section-title">Personal Contact Information</h2>
+
+        <div class="form-group">
+          <label for="fullAddress">Full Home Address</label>
+          <textarea id="fullAddress" placeholder="123 Jalan Example, Taman ABC, 50000 Kuala Lumpur, Malaysia"></textarea>
+          <span class="hint">Full residential address for official documents and background checks</span>
+          <div class="advice-box">
+            <div class="advice-title">💡 Advice:</div>
+            <div class="advice-text">Only provide this when explicitly requested for background verification. Most applications don't need full address upfront—city/state is sufficient.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="tel" id="phoneNumber" placeholder="+60 12-345 6789">
+          <span class="hint">Primary contact number for recruiters</span>
+          <div class="advice-box">
+            <div class="advice-title">💡 Advice:</div>
+            <div class="advice-text">Use a number you check regularly. Consider a professional voicemail greeting. If applying internationally, include country code.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="currentSalary">Current/Last Salary (MYR per month)</label>
+          <input type="number" id="currentSalary" placeholder="12000">
+          <span class="hint">Your most recent monthly gross salary</span>
+          <div class="advice-box">
+            <div class="advice-title">💡 Advice:</div>
+            <div class="advice-text">Only disclose if legally required or pressed. In many jurisdictions, it's illegal to ask. If asked, you can deflect: "I'm looking for market rate for this role, which I understand is RM X-Y range."</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="expectedSalary">Expected Salary (MYR per month)</label>
+          <input type="number" id="expectedSalary" placeholder="15000">
+          <span class="hint">Your target monthly gross salary for next role</span>
+          <div class="advice-box">
+            <div class="advice-title">💡 Advice:</div>
+            <div class="advice-text">Research market rates first (Glassdoor, PayScale, LinkedIn Salary). Add 15-20% buffer for negotiation. Frame as range: "RM 14,000-16,000 depending on total package and benefits." Never anchor too low—you're underselling yourself.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reasons for Leaving Each Job -->
+      <div class="section">
+        <h2 class="section-title">Reasons for Leaving (Each Job)</h2>
+        <p style="color: #999; margin-bottom: 1.5rem; font-size: 0.9rem;">Be honest but professional. Recruiters will verify with references.</p>
+
+        <div class="job-block">
+          <div class="job-header">PayHalal (May 2023 – July 2025)</div>
+          <div class="form-group">
+            <label for="reason_payhalal">Why did you leave?</label>
+            <textarea id="reason_payhalal" placeholder="E.g., Seeking growth in .NET/C# backend systems, limited .NET opportunities here"></textarea>
+            <div class="advice-box">
+              <div class="advice-title">💡 How to Answer:</div>
+              <div class="advice-text">
+                <strong>Good:</strong> "Looking for deeper technical challenges in .NET/C# ecosystems" / "Seeking role with more backend architecture ownership"<br>
+                <strong>Avoid:</strong> "Management issues" / "Underpaid" / "Didn't like the tech stack"<br>
+                <strong>Frame:</strong> Pull towards new opportunity (positive), not push away from old company (negative)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="job-block">
+          <div class="job-header">Eurofins Scientific (Aug 2021 – Sep 2021)</div>
+          <div class="form-group">
+            <label for="reason_eurofins">Why only 2 months?</label>
+            <textarea id="reason_eurofins" placeholder="E.g., Short-term contract, pivoted to software development role"></textarea>
+            <div class="advice-box">
+              <div class="advice-title">💡 How to Answer:</div>
+              <div class="advice-text">
+                <strong>Good:</strong> "Contract-based engagement for automation project" / "Realized core development better fits career goals than RPA"<br>
+                <strong>Explain Short Stay:</strong> Acknowledge it upfront: "It was a short contract, but I learned UiPath/C# automation quickly"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="job-block">
+          <div class="job-header">Mahersaham (Feb 2021 – May 2021)</div>
+          <div class="form-group">
+            <label for="reason_mahersaham">Why only 4 months?</label>
+            <textarea id="reason_mahersaham" placeholder="E.g., Contract role, project-based engagement"></textarea>
+            <div class="advice-box">
+              <div class="advice-title">💡 How to Answer:</div>
+              <div class="advice-text">
+                <strong>Good:</strong> "Project-based contract for stock screener R&D" / "Delivered MVP, contract naturally concluded"<br>
+                <strong>Frame:</strong> "Contributed to production launch, then pursued permanent full-stack roles"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="job-block">
+          <div class="job-header">Appspace (Feb 2019 – July 2019)</div>
+          <div class="form-group">
+            <label for="reason_appspace">Why did you leave?</label>
+            <textarea id="reason_appspace" placeholder="E.g., Limited growth opportunity, seeking full-stack ownership"></textarea>
+            <div class="advice-box">
+              <div class="advice-title">💡 How to Answer:</div>
+              <div class="advice-text">
+                <strong>Good:</strong> "Gained valuable CQRS/microservices experience, sought more full-stack ownership"<br>
+                <strong>Avoid:</strong> "Company culture didn't fit" / "Too slow-paced"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="job-block">
+          <div class="job-header">MY E.G. Services (Apr 2017 – Nov 2018)</div>
+          <div class="form-group">
+            <label for="reason_myeg">Why did you leave?</label>
+            <textarea id="reason_myeg" placeholder="E.g., Project concluded, seeking new technical challenges"></textarea>
+            <div class="advice-box">
+              <div class="advice-title">💡 How to Answer:</div>
+              <div class="advice-text">
+                <strong>Good:</strong> "Government project reached production, natural transition point" / "Wanted to explore modern cloud-native architectures"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="job-block">
+          <div class="job-header">AGTIV Consulting (Jul 2016 – Oct 2016)</div>
+          <div class="form-group">
+            <label for="reason_agtiv">Why only 4 months?</label>
+            <textarea id="reason_agtiv" placeholder="E.g., Consultant contract for Sime Darby project"></textarea>
+            <div class="advice-box">
+              <div class="advice-title">💡 How to Answer:</div>
+              <div class="advice-text">
+                <strong>Good:</strong> "Contract consulting engagement for Sime Darby SharePoint migration" / "Delivered project scope, contract concluded"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="job-block">
+          <div class="job-header">GHL Systems (Apr 2013 – Dec 2014)</div>
+          <div class="form-group">
+            <label for="reason_ghl">Why did you leave?</label>
+            <textarea id="reason_ghl" placeholder="E.g., Seeking broader technical exposure beyond payments"></textarea>
+            <div class="advice-box">
+              <div class="advice-title">💡 How to Answer:</div>
+              <div class="advice-text">
+                <strong>Good:</strong> "Gained strong payments domain knowledge, wanted to expand to other industries" / "Looking for modern tech stacks"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="job-block">
+          <div class="job-header">Speedminer (Feb 2011 – May 2011)</div>
+          <div class="form-group">
+            <label for="reason_speedminer">Why only 4 months?</label>
+            <textarea id="reason_speedminer" placeholder="E.g., Contract implementation project, fresh graduate role"></textarea>
+            <div class="advice-box">
+              <div class="advice-title">💡 How to Answer:</div>
+              <div class="advice-text">
+                <strong>Good:</strong> "First role post-graduation, contract-based ERP implementation project" / "Completed UAT phase, moved to full-time engineering role"
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Notes -->
+      <div class="section">
+        <h2 class="section-title">Additional Private Notes</h2>
+
+        <div class="form-group">
+          <label for="references">References (Names, Titles, Contact)</label>
+          <textarea id="references" placeholder="E.g., Ahmad Abdullah, Senior Manager @ PayHalal, +60 12-123 4567"></textarea>
+          <span class="hint">2-3 professional references who can vouch for your work</span>
+          <div class="advice-box">
+            <div class="advice-title">💡 Advice:</div>
+            <div class="advice-text">Always ask permission before listing someone as reference. Choose managers/senior colleagues who know your work well. Provide context when asking: "I'm applying for .NET backend roles, can you speak to my C# skills?"</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="availability">Notice Period / Availability</label>
+          <select id="availability">
+            <option value="">Select...</option>
+            <option value="immediate">Immediate / 1 week</option>
+            <option value="2weeks">2 weeks</option>
+            <option value="1month">1 month</option>
+            <option value="2months">2 months</option>
+            <option value="3months">3 months</option>
+          </select>
+          <span class="hint">How soon can you start the new role?</span>
+          <div class="advice-box">
+            <div class="advice-title">💡 Advice:</div>
+            <div class="advice-text">Standard in Malaysia: 1-3 months. Be honest—companies expect notice periods. If immediate: explain professionally ("Currently between roles and actively seeking opportunities").</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="workPreference">Work Preference</label>
+          <select id="workPreference">
+            <option value="">Select...</option>
+            <option value="remote">Fully Remote</option>
+            <option value="hybrid">Hybrid (2-3 days office)</option>
+            <option value="onsite">On-site</option>
+            <option value="flexible">Flexible / Open to discussion</option>
+          </select>
+          <div class="advice-box">
+            <div class="advice-title">💡 Advice:</div>
+            <div class="advice-text">Remote work increasingly common post-COVID. If seeking remote: emphasize self-management, communication skills, past remote experience (Eurofins, PayHalal).</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="weaknesses">Self-Reflection: Areas for Growth</label>
+          <textarea id="weaknesses" placeholder="E.g., Want to deepen cloud architecture knowledge (AWS/Azure), improve system design at scale"></textarea>
+          <span class="hint">Honest self-assessment for interview prep—what do you want to improve?</span>
+          <div class="advice-box">
+            <div class="advice-title">💡 How to Answer "What's your weakness?":</div>
+            <div class="advice-text">
+              <strong>Good Structure:</strong> Name real weakness → What you're doing to fix it → Progress made<br>
+              <strong>Example:</strong> "I'm working on system design at enterprise scale. I've been studying distributed systems patterns and completed AWS Solutions Architect course. In my next role, I want hands-on experience designing high-availability systems."<br>
+              <strong>Avoid:</strong> "I'm a perfectionist" (cliché) / "I work too hard" (disingenuous)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="warning">
+        ⚠️ <strong>Security Warning:</strong> This file contains sensitive personal information. Do NOT commit to public repositories. Keep it local-only or in encrypted storage.
+      </div>
+
+      <div class="button-group">
+        <button type="button" class="btn-primary" onclick="saveToStorage()">💾 Save to File</button>
+        <button type="button" class="btn-secondary" onclick="loadFromStorage()">📂 Load from File</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    async function saveToStorage() {
+      const formData = {
+        personalInfo: {
+          fullAddress: document.getElementById('fullAddress').value,
+          phoneNumber: document.getElementById('phoneNumber').value,
+          currentSalary: parseInt(document.getElementById('currentSalary').value) || null,
+          expectedSalary: parseInt(document.getElementById('expectedSalary').value) || null
+        },
+        reasonsForLeaving: {
+          payhalal: document.getElementById('reason_payhalal').value,
+          eurofins: document.getElementById('reason_eurofins').value,
+          mahersaham: document.getElementById('reason_mahersaham').value,
+          appspace: document.getElementById('reason_appspace').value,
+          myeg: document.getElementById('reason_myeg').value,
+          agtiv: document.getElementById('reason_agtiv').value,
+          ghl: document.getElementById('reason_ghl').value,
+          speedminer: document.getElementById('reason_speedminer').value
+        },
+        additional: {
+          references: document.getElementById('references').value,
+          availability: document.getElementById('availability').value,
+          workPreference: document.getElementById('workPreference').value,
+          weaknesses: document.getElementById('weaknesses').value
+        }
+      };
+
+      try {
+        const response = await fetch('/api/resume-data', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+        if (result.success) {
+          alert('✅ Data saved to resume-private-data.json!');
+        } else {
+          alert('❌ Error saving: ' + result.error);
+        }
+      } catch (err) {
+        alert('❌ Server error. Make sure resume-data-server.js is running:\nnode resume-data-server.js');
+        console.error(err);
+      }
+    }
+
+    async function loadFromStorage() {
+      try {
+        const response = await fetch('/api/resume-data');
+        const data = await response.json();
+
+        if (!data.personalInfo) {
+          alert('No saved data found.');
+          return;
+        }
+
+        // Load personal info
+        document.getElementById('fullAddress').value = data.personalInfo.fullAddress || '';
+        document.getElementById('phoneNumber').value = data.personalInfo.phoneNumber || '';
+        document.getElementById('currentSalary').value = data.personalInfo.currentSalary || '';
+        document.getElementById('expectedSalary').value = data.personalInfo.expectedSalary || '';
+
+        // Load reasons for leaving
+        document.getElementById('reason_payhalal').value = data.reasonsForLeaving.payhalal || '';
+        document.getElementById('reason_eurofins').value = data.reasonsForLeaving.eurofins || '';
+        document.getElementById('reason_mahersaham').value = data.reasonsForLeaving.mahersaham || '';
+        document.getElementById('reason_appspace').value = data.reasonsForLeaving.appspace || '';
+        document.getElementById('reason_myeg').value = data.reasonsForLeaving.myeg || '';
+        document.getElementById('reason_agtiv').value = data.reasonsForLeaving.agtiv || '';
+        document.getElementById('reason_ghl').value = data.reasonsForLeaving.ghl || '';
+        document.getElementById('reason_speedminer').value = data.reasonsForLeaving.speedminer || '';
+
+        // Load additional info
+        document.getElementById('references').value = data.additional.references || '';
+        document.getElementById('availability').value = data.additional.availability || '';
+        document.getElementById('workPreference').value = data.additional.workPreference || '';
+        document.getElementById('weaknesses').value = data.additional.weaknesses || '';
+
+        alert('✅ Data loaded from file!');
+      } catch (err) {
+        alert('❌ Server error. Make sure resume-data-server.js is running:\nnode resume-data-server.js');
+        console.error(err);
+      }
+    }
+
+    function generateResume() {
+      alert('ℹ️ This button is deprecated. Just use "Save to File" to persist your data.\n\nresume-private.html remains clean (no private data displayed).\n\nYour data is saved to resume-private-data.json for interview reference.');
+    }
+  </script>
+</body>
+</html>

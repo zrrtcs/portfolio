@@ -87,41 +87,47 @@
       margin-bottom: 0.25in;
     }
 
-    .job {
+    .job, .education-entry {
       margin-bottom: 0.3in;
       page-break-inside: avoid;
     }
 
-    .job-header {
+    .job-header, .education-header {
       display: flex;
       justify-content: space-between;
       margin-bottom: 0.08in;
     }
 
-    .job-title {
+    .job-title, .degree-title {
       font-size: 23px;
       font-weight: 700;
       color: #0a1628;
     }
 
-    .job-dates {
+    .job-dates, .education-dates {
       font-size: 19px;
       color: #666;
       font-weight: 600;
     }
 
-    .company {
+    .company, .institution {
       font-size: 21px;
       color: #dc2626;
       font-weight: 600;
       margin-bottom: 0.08in;
     }
 
-    .job-description {
+    .job-description, .coursework {
       font-size: 19px;
       color: #555;
       line-height: 1.7;
       margin-bottom: 0.12in;
+    }
+
+    .gpa {
+      font-size: 19px;
+      color: #666;
+      margin-top: 0.08in;
     }
 
     .achievements {
@@ -248,31 +254,35 @@
       margin-bottom: 0.15in;
     }
 
-    body.compact .job {
+    body.compact .job, body.compact .education-entry {
       margin-bottom: 0.15in;
     }
 
-    body.compact .job-header {
+    body.compact .job-header, body.compact .education-header {
       margin-bottom: 0.03in;
     }
 
-    body.compact .job-title {
+    body.compact .job-title, body.compact .degree-title {
       font-size: 12px;
     }
 
-    body.compact .job-dates {
+    body.compact .job-dates, body.compact .education-dates {
       font-size: 10px;
     }
 
-    body.compact .company {
+    body.compact .company, body.compact .institution {
       font-size: 11px;
       margin-bottom: 0.03in;
     }
 
-    body.compact .job-description {
+    body.compact .job-description, body.compact .coursework {
       font-size: 10px;
       line-height: 1.4;
       margin-bottom: 0.06in;
+    }
+
+    body.compact .gpa {
+      font-size: 10px;
     }
 
     body.compact .achievements {
@@ -628,23 +638,23 @@
   <div class="section education-section">
     <div class="section-title">Education</div>
 
-    <div class="job education-entry">
-      <div class="job-header education-header">
-        <div class="job-title degree-title">Bachelor of Engineering (B.E.)</div>
-        <div class="job-dates education-dates">2006-2011</div>
+    <div class="education-entry">
+      <div class="education-header">
+        <div class="degree-title">Bachelor of Engineering (B.E.)</div>
+        <div class="education-dates">2006-2011</div>
       </div>
-      <div class="company institution">Multimedia University</div>
-      <div class="tech gpa">CGPA: 2.98</div>
-      <div class="job-description coursework" style="margin-top: 0.08in;">Coursework highlights: Audio/Video/Image/Text processing, digital & analog signal processing, data processing algorithms</div>
+      <div class="institution">Multimedia University</div>
+      <div class="gpa">CGPA: 2.98</div>
+      <div class="coursework" style="margin-top: 0.08in;">Coursework highlights: Audio/Video/Image/Text processing, digital & analog signal processing, data processing algorithms</div>
     </div>
 
-    <div class="job education-entry">
-      <div class="job-header education-header">
-        <div class="job-title degree-title">Foundation Degree, Physical Sciences</div>
-        <div class="job-dates education-dates">2005</div>
+    <div class="education-entry">
+      <div class="education-header">
+        <div class="degree-title">Foundation Degree, Physical Sciences</div>
+        <div class="education-dates">2005</div>
       </div>
-      <div class="company institution">Universiti Malaya</div>
-      <div class="tech gpa">CGPA: 3.8</div>
+      <div class="institution">Universiti Malaya</div>
+      <div class="gpa">CGPA: 3.8</div>
     </div>
   </div>
 

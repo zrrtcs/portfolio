@@ -390,6 +390,9 @@
         document.body.classList.add('compact');
         document.getElementById('toggleText').textContent = 'Full Size';
       }
+      if (new URLSearchParams(window.location.search).get('contact') === 'true') {
+        document.getElementById('phone-contact').style.display = 'inline';
+      }
     });
   </script>
 </head>
@@ -407,7 +410,7 @@
     <div class="name">AIZZAT SUHARDI</div>
     <div class="title">Full-Stack Engineer • Real-time Systems Specialist</div>
     <div class="contact">
-      aizzat.suhardi@gmail.com • zrrtcs.github.io/portfolio • github.com/zrrtcs • linkedin.com/in/aizzatsuhardi
+      aizzat.suhardi@gmail.com<span id="phone-contact" style="display:none;"> • 012-310-1627</span> • zrrtcs.github.io/portfolio • github.com/zrrtcs • linkedin.com/in/aizzatsuhardi
     </div>
   </div>
 

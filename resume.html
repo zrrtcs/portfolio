@@ -391,7 +391,11 @@
         document.getElementById('toggleText').textContent = 'Full Size';
       }
       if (new URLSearchParams(window.location.search).get('contact') === 'true') {
+        // Scam-proof: build phone from parts (bots can't scrape static HTML)
+        var p = ['+','6','0','1','2','-','3','1','0','-','1','6','2','7'];
+        document.getElementById('phone-contact').textContent = p.join('') + ' • ';
         document.getElementById('phone-contact').style.display = 'inline';
+        document.getElementById('email-contact').style.display = 'inline';
       }
     });
   </script>
@@ -410,7 +414,7 @@
     <div class="name">AIZZAT SUHARDI</div>
     <div class="title">Full-Stack Engineer • Real-time Systems Specialist</div>
     <div class="contact">
-      aizzat.suhardi@gmail.com<span id="phone-contact" style="display:none;"> • 012-310-1627</span> • zrrtcs.github.io/portfolio • github.com/zrrtcs • linkedin.com/in/aizzatsuhardi
+      <span id="phone-contact" style="display:none;"></span><span id="email-contact" style="display:none;">aizzat.suhardi@gmail.com<br></span>zrrtcs.github.io/portfolio • github.com/zrrtcs • linkedin.com/in/aizzatsuhardi
     </div>
   </div>
 
